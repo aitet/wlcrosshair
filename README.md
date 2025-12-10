@@ -8,7 +8,7 @@ Any compositor that implements the layer shell protocol should work, including:
 
 - **Hyprland**
 - wlroots based compositors like **Sway**
-- Smithay based compositors like **COSMIC**
+- Smithay based compositors like **COSMIC** & **niri**
 - **KDE Plasma** Wayland
 
 Notable compositors that do not implement the layer shell protocol and thus are not supported:
@@ -24,8 +24,8 @@ Create a configuration file at `~/.config/wlcrosshair/config.toml` to customize 
 ```toml
 path = "~/.config/wlcrosshair/rotated.png" # REQUIRED: path to crosshair image
 output = "DP-2" # REQUIRED: output name as named by your compositor
-size = 24 # REQUIRED: size of the crosshair in pixels
-# OR:
+size = 24 # REQUIRED: size of the crosshair in pixels, will resize the image to size x size pixels
+# OR if the image is not square, use width and height instead:
 # width = 32 # width of the crosshair in pixels
 # height = 16 # height of the crosshair in pixels
 ```
@@ -44,6 +44,8 @@ To close the crosshair overlay, either kill the `wlcrosshair` process or use:
 ```bash
 wlcrosshairctl quit
 ```
+
+If you do not have a crosshair image, you can find some samples I made [here](./sample_crosshairs/). You're also welcome to add your own ones to the repo.
 
 ## Installation
 
