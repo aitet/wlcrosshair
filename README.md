@@ -1,6 +1,6 @@
 # wlcrosshair
 
-Simple crosshair overlay for wlroots-based Wayland compositors. 
+Simple crosshair overlay for Wayland. 
 
 ## Supported compositors
 
