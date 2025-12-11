@@ -10,6 +10,7 @@ const (
 	CmdToggle Command = "toggle"
 	CmdShow   Command = "show"
 	CmdHide   Command = "hide"
+	CmdReload Command = "reload"
 	CmdQuit   Command = "quit"
 )
 

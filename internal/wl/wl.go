@@ -12,32 +12,34 @@ import (
 	"unsafe"
 )
 
-var ErrInit = errors.New("wayland init failed")
-
-func Init(path string, width, height int, output string) error {
-	cpath := C.CString(path)
+func InitSurface(width, height int, output string) error {
 	coutput := C.CString(output)
-	defer C.free(unsafe.Pointer(cpath))
 	defer C.free(unsafe.Pointer(coutput))
 
-	if C.wl_init(C.int(width), C.int(height), cpath, coutput) != 0 {
-		return ErrInit
+	if !bool(C.init_surface(C.int(width), C.int(height), coutput)) {
+		return errors.New("failed to initalise surface")
 	}
 	return nil
 }
 
-func Show() {
-	C.wl_show()
+func LoadPNG(path string) bool {
+	cpath := C.CString(path)
+	defer C.free(unsafe.Pointer(cpath))
+	return bool(C.load_png(cpath))
 }
 
-func Hide() {
-	C.wl_hide()
+func DrawPNG() {
+	C.draw_png()
 }
 
-func Destroy() {
-	C.wl_destroy()
+func ClearSurface() {
+	C.clear_surface()
 }
 
-func Visible() bool {
-	return C.cross_visible() != 0
+func FreePNG() {
+	C.free_png()
+}
+
+func DestroySurface() {
+	C.destroy_surface()
 }

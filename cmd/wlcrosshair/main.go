@@ -33,13 +33,20 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := wl.Init(
-		expandUser(conf.Path),
+	if err := wl.InitSurface(
 		conf.Width,
 		conf.Height,
 		conf.Output,
 	); err != nil {
+		fmt.Printf("%v\n", err)
 		os.Exit(1)
+	}
+
+	visible := false
+	wl.LoadPNG(expandUser(conf.Path))
+
+	if visible {
+		wl.DrawPNG()
 	}
 
 	ipc.Listen(shared.SocketPath, func(cmdStr string) {
@@ -50,17 +57,21 @@ func main() {
 
 		switch cmd {
 		case shared.CmdToggle:
-			if wl.Visible() {
-				wl.Hide()
+			if visible {
+				wl.ClearSurface()
+				visible = false
 			} else {
-				wl.Show()
+				wl.DrawPNG()
+				visible = true
 			}
 		case shared.CmdShow:
-			wl.Show()
+			wl.DrawPNG()
+			visible = true
 		case shared.CmdHide:
-			wl.Hide()
+			wl.ClearSurface()
+			visible = false
 		case shared.CmdQuit:
-			wl.Destroy()
+			wl.DestroySurface()
 			os.Exit(0)
 		}
 	})
