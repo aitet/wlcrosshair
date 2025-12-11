@@ -18,6 +18,7 @@ var AllCommands = map[Command]struct{}{
 	CmdToggle: {},
 	CmdShow:   {},
 	CmdHide:   {},
+	CmdReload: {},
 	CmdQuit:   {},
 }
 

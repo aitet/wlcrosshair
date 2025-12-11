@@ -70,6 +70,27 @@ func main() {
 		case shared.CmdHide:
 			wl.ClearSurface()
 			visible = false
+		case shared.CmdReload:
+			conf, err = config.Load(configPath)
+			if err != nil {
+				return
+			}
+			wl.DestroySurface()
+			
+			if err := wl.InitSurface(
+				conf.Width,
+				conf.Height,
+				conf.Output,
+				); err != nil {
+				os.Exit(1)
+			}
+
+			wl.FreePNG()
+			wl.LoadPNG(expandUser(conf.Path))
+			
+			if visible {
+				wl.DrawPNG()
+			}
 		case shared.CmdQuit:
 			wl.DestroySurface()
 			os.Exit(0)

@@ -39,6 +39,12 @@ wlcrosshairctl toggle
 # or show/hide to force visibility
 ```
 
+To update after a config change while the app is running issue:
+
+```bash
+wlcrosshairctl reload
+```
+
 To close the crosshair overlay, either kill the `wlcrosshair` process or use:
 
 ```bash
