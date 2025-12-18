@@ -72,12 +72,23 @@ static void reset_state(void) {
 }
 
 
+
 static void premultiply(uint8_t *data, int w, int h) {
   for (int i = 0; i < w * h; i++) {
+    uint8_t r = data[0];
+    uint8_t g = data[1];
+    uint8_t b = data[2];
     uint8_t a = data[3];
-    data[0] = (data[0] * a) / 255;
-    data[1] = (data[1] * a) / 255;
-    data[2] = (data[2] * a) / 255;
+
+    r = (r * a) / 255;
+    g = (g * a) / 255;
+    b = (b * a) / 255;
+
+    data[0] = b;
+    data[1] = g;
+    data[2] = r;
+    data[3] = a;
+
     data += 4;
   }
 }
