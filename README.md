@@ -55,7 +55,7 @@ If you do not have a crosshair image, you can find some samples I made [here](./
 or use one of these online crosshair generators:
 
 - [KovaaK's](https://kovaaks.com/kovaaks/crosshair-creator/) - download for your resolution and set `width` & `height` to that resolution. If you're in 4K, download the 1080p version but set `width = 3840` and `height = 2160`, it will be perfectly scaled 2x
-- [EasyAim](https://https://easyaim.com/crosshair-generator) - download by pressing the download button in the bottom right of the preview and set `size = 1000`
+- [EasyAim](https://easyaim.com/crosshair-generator) - download by pressing the download button in the bottom right of the preview and set `size = 1000`
 
 ## Installation
 
