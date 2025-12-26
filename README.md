@@ -80,7 +80,7 @@ Grab the latest release binaries from the [releases page](https://github.com/mar
 
 ### Install from package manager:
 
-I'll make an AUR package soon enough. You're welcome to package it for your distro too.
+- AUR - [wlcrosshair](https://aur.archlinux.org/packages/wlcrosshair)
 
 ## License
 
